@@ -1,4 +1,5 @@
-import logo from './logo.svg';
+import { useSelector, useDispatch } from "react-redux";
+import { increment, decrement, reset } from "./store";
 import './App.css';
 
 function App() {
@@ -29,18 +30,18 @@ function App() {
 }
 
 const Counter = () => {
-  // const count = useSelector((state) => state);
-  // const dispatch = useDispatch();
+  const count = useSelector((state) => state);
+  const dispatch = useDispatch();
 
   return (
     <div>
       <h2>0</h2>
-      <button onClick>-</button>
+      {/* <button onClick>-</button>
       <button onClick>+</button>
-      <button onClick>reset</button>
-      {/* <button onClick={() => dispatch(decrement)}>-</button>
+      <button onClick>reset</button> */}
+      <button onClick={() => dispatch(decrement)}>-</button>
       <button onClick={() => dispatch(increment)}>+</button>
-      <button onClick={() => dispatch(reset)}>reset</button> */}
+      <button onClick={() => dispatch(reset)}>reset</button>
     </div>
   );
 };
