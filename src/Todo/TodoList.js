@@ -4,7 +4,7 @@ import '../App.css';
 
 
 const TodoList = () => {
-      const todos = [{id: 1, title: "React", cjmpleted: false}];
+      const todos = [{id: 1, title: "React", completed: false}];
     //   const dispatch = useDispatch();
       return (
         // <h3>TodoList</h3>

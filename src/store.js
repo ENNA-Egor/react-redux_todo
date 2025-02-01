@@ -1,6 +1,6 @@
-import { createStore } from "redux";
+import { createStore, combineReducers } from "redux";
 
-const counter = (state = 0, action) => {
+const counterReducer = (state = 0, action) => {
   switch (action.type) {
     case "INCREMENT": {
       return state + 1;
@@ -17,9 +17,30 @@ const counter = (state = 0, action) => {
   }
 };
 
-export const store = createStore(counter);
+const todosReducer = (state = [], action)=> {
+  if (action.type === "ADD_TODO"){
+    return [...state, 
+      {id: 1, 
+        title: "React", 
+        completed: false
+      }];
+  }
+  return state;
+}
 
-// actions
-export const increment = { type: "INCREMENT" };
-export const decrement = { type: "DECREMENT" };
-export const reset = { type: "RESET" };
+const rootReducer = combineReducers({
+  counter: counterReducer,
+  todos: todosReducer
+});
+ const store = createStore(rootReducer);
+
+  console.log("State:", store.getState());
+
+ 
+ // actions
+ export const increment = { type: "INCREMENT" };
+ export const decrement = { type: "DECREMENT" };
+ export const reset = { type: "RESET" };
+ export const addtodo = { type: "ADD_TODO"}
+
+ export default store ;
