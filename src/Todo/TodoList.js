@@ -1,11 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { addTodo, removeTodo, toggleTodo } from '../store';
+import { removeTodo, toggleTodo } from '../store';
 import '../App.css';
 
 
 const TodoList = () => {
-      const todos = [{id: 1, title: "React", completed: false}];
-    //   const dispatch = useDispatch();
+      const todos = useSelector((state) => state.todos);
+      const dispatch = useDispatch();
       return (
         // <h3>TodoList</h3>
         <ul>
@@ -14,10 +14,11 @@ const TodoList = () => {
               <input
                 type="checkbox"
                 checked={todo.completed}
-                // onChange={() => dispatch(toggleTodo(todo.id))}
+                onChange={() => dispatch(toggleTodo(todo.id))}
               />{" "}
               {todo.title}{" "}
-              <button >delete</button>
+              <button 
+              onClick={()=>dispatch(removeTodo(todo.id))}>delete</button>
             </li>
           ))}
         </ul>

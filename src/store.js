@@ -18,29 +18,57 @@ const counterReducer = (state = 0, action) => {
 };
 
 const todosReducer = (state = [], action)=> {
-  if (action.type === "ADD_TODO"){
-    return [...state, 
-      {id: 1, 
-        title: "React", 
-        completed: false
-      }];
+  switch (action.type){
+    case "ADD_TODO":{
+      return [
+        ...state, 
+        {id: Date.now(), 
+          title: action.title, 
+          completed: false
+        }
+      ];
+    }
+    case "REMOVE_TODO":{
+      return state.filter((todo)=> todo.id !== action.id);
+    }
+    case  "TOGGLE_TODO":{
+      return state.map((todo)=>
+        todo.id === action.id ? { ...todo, completed: !todo.completed } : todo
+      );
+    }
+    default: {
+      return state;
+    }
   }
-  return state;
 }
 
 const rootReducer = combineReducers({
   counter: counterReducer,
   todos: todosReducer
 });
- const store = createStore(rootReducer);
+export const store = createStore(rootReducer);
 
-  console.log("State:", store.getState());
+  // console.log("State:", store.getState());
 
  
  // actions
  export const increment = { type: "INCREMENT" };
  export const decrement = { type: "DECREMENT" };
  export const reset = { type: "RESET" };
- export const addtodo = { type: "ADD_TODO"}
 
- export default store ;
+// actionsCreators
+
+ export const addTodo = (title) => ({ 
+  type: "ADD_TODO",
+  title
+})
+ export const toggleTodo = (id) => ({ 
+  type: "TOGGLE_TODO",
+  id
+ });
+ export const removeTodo = (id) =>({ 
+  type: "REMOVE_TODO",
+  id
+ });
+
+
