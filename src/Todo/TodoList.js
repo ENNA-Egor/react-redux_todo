@@ -3,7 +3,7 @@ import { removeTodo, toggleTodo } from '../store';
 import '../App.css';
 
 
-const TodoList = () => {
+const TodoList = () => { // отрисовываем данные
       const todos = useSelector((state) => state.todos);
       const dispatch = useDispatch();
       return (

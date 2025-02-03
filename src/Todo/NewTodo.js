@@ -2,7 +2,7 @@
 import { useDispatch } from 'react-redux';
 import { addTodo } from '../store';
 
-const NewTodo = () => {
+const NewTodo = () => {  //Добавляем данные в стор
       const dispatch = useDispatch();
 
       const handleSubmit = (event) => {
