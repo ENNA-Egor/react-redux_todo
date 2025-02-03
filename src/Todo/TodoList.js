@@ -16,7 +16,7 @@ const TodoList = () => { // отрисовываем данные
                 checked={todo.completed}
                 onChange={() => dispatch(toggleTodo(todo.id))}
               />{" "}
-              {todo.title}{" "}
+              {"Ф.      "}{todo.title}{" И.     "}{todo.title1}
               <button 
               onClick={()=>dispatch(removeTodo(todo.id))}>delete</button>
             </li>

@@ -24,6 +24,7 @@ const todosReducer = (state = [], action)=> {
         ...state, 
         {id: Date.now(), 
           title: action.title, 
+          title1: action.title1, 
           completed: false
         }
       ];
@@ -58,9 +59,10 @@ export const store = createStore(rootReducer);
 
 // actionsCreators
 
- export const addTodo = (title) => ({ 
+ export const addTodo = (title, title1) => ({ 
   type: "ADD_TODO",
-  title
+  title,
+  title1
 })
  export const toggleTodo = (id) => ({ 
   type: "TOGGLE_TODO",
