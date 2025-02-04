@@ -1,5 +1,5 @@
-import Counter from './Counter';
-import Todo from './Todo/AppTodo';
+import Counter from './Components/Counter';
+import Todo from './Components/AppTodo';
 import './App.css';
 
 function App() {

@@ -1,4 +1,5 @@
 import { createStore, combineReducers } from "redux";
+import {todosReducer} from './Todos/todos-reduser'
 
 const counterReducer = (state = 0, action) => {
   switch (action.type) {
@@ -17,31 +18,7 @@ const counterReducer = (state = 0, action) => {
   }
 };
 
-const todosReducer = (state = [], action)=> {
-  switch (action.type){
-    case "ADD_TODO":{
-      return [
-        ...state, 
-        {id: Date.now(), 
-          title: action.title, 
-          title1: action.title1, 
-          completed: false
-        }
-      ];
-    }
-    case "REMOVE_TODO":{
-      return state.filter((todo)=> todo.id !== action.id);
-    }
-    case  "TOGGLE_TODO":{
-      return state.map((todo)=>
-        todo.id === action.id ? { ...todo, completed: !todo.completed } : todo
-      );
-    }
-    default: {
-      return state;
-    }
-  }
-}
+
 
 const rootReducer = combineReducers({
   counter: counterReducer,
@@ -50,7 +27,7 @@ const rootReducer = combineReducers({
 });
 export const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
-  // console.log("State:", store.getState());
+
 
  
  // actions
@@ -58,20 +35,5 @@ export const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION_
  export const decrement = { type: "DECREMENT" };
  export const reset = { type: "RESET" };
 
-// actionsCreators
-
- export const addTodo = (title, title1) => ({ 
-  type: "ADD_TODO",
-  title,
-  title1
-})
- export const toggleTodo = (id) => ({ 
-  type: "TOGGLE_TODO",
-  id
- });
- export const removeTodo = (id) =>({ 
-  type: "REMOVE_TODO",
-  id
- });
 
 

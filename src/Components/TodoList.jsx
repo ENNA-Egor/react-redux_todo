@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { removeTodo, toggleTodo } from '../store';
+import { removeTodo, toggleTodo } from '../Todos/todos-actions';
 import '../App.css';
 
 
