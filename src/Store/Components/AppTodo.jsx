@@ -4,7 +4,7 @@ import TodoList from './TodoList';
 import {Filters} from './Filters';
 
 
-import '../App.css';
+import '../../App.css';
 
 export default function Todo() {
     return (

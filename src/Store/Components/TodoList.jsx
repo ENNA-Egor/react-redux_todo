@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { removeTodo, toggleTodo } from '../Todos/todos-actions';
 import {selectVisibleTodos, selectActiveTodos} from '../Todos/todos-selector';
 import {selectActiveFilter} from '../Filters/filters-selectors';
-import '../App.css';
+import '../../App.css';
 
 
 const TodoList = () => { // отрисовываем данные
