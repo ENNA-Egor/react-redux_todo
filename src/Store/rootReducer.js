@@ -3,6 +3,7 @@ import {todosReducer} from './Todos/todos-reduser';
 import {counterReducer} from './Counter/counter-reduser';
 import {filters} from './Filters/filters-reducer';
 import {loadState, saveState} from './Todos/local-storage';
+import throttle from 'lodash/throttle';
 
 
 
@@ -21,9 +22,12 @@ export const cofigureStore = () => {
     persistedState,
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   );
-  store.subscribe(()=>{
-    saveState(store.getState());
-  });
+  store.subscribe(throttle(()=>{
+    saveState({
+      todos:store.getState().todos,
+      counter: store.getState().counter,
+    });
+  }, 3000));
 
    return store ;
 };
