@@ -4,8 +4,7 @@ import {counterReducer} from './Counter/counter-reduser';
 import {filters} from './Filters/filters-reducer';
 import {loadState, saveState} from './Todos/local-storage';
 
-const el = loadState();
-console.log (el)
+
 
 const rootReducer = combineReducers({
   counter: counterReducer,
@@ -17,7 +16,6 @@ const rootReducer = combineReducers({
 
 export const cofigureStore = () => {
   const persistedState = loadState();
-  console.log (persistedState)
   const store = createStore(
     rootReducer, 
     persistedState,
